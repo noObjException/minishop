@@ -25,4 +25,5 @@ return [
     'deleted_at' => '删除时间',
 
     'category' => '分类',
+    'theme'    => '主题',
 ];

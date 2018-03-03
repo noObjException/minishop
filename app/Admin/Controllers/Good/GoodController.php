@@ -5,6 +5,7 @@ namespace App\Admin\Controllers\Good;
 use App\Models\Good;
 
 use App\Models\GoodCategory;
+use App\Models\GoodTheme;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Facades\Admin;
@@ -81,6 +82,7 @@ class GoodController extends Controller
             })->image('', 40, 40);
             $grid->column('title', __('field.title'));
             $grid->column('category.title', __('field.category'));
+            $grid->column('theme.title', __('field.theme'));
             $grid->column('price', __('field.price'))->display(function ($price) {
                 return '¥ ' . $price;
             });
@@ -104,6 +106,7 @@ class GoodController extends Controller
 
             $form->text('title', __('field.title'))->rules('required');
             $form->select('category_id', __('field.category'))->options(collect(GoodCategory::selectOptions())->slice(1)->all());
+            $form->select('theme_id', __('field.theme'))->options(collect(GoodTheme::selectOptions())->slice(1)->all());
             $form->textarea('description', __('field.description'));
             $form->multipleImage('thumbs', __('field.image'));
             $form->currency('price', __('field.price'))->symbol('￥');

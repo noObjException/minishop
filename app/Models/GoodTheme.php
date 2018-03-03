@@ -45,6 +45,6 @@ class GoodTheme extends Model
 
     public function goods()
     {
-        return $this->hasMany('App\Models\Good', 'category_id', 'id');
+        return $this->hasMany('App\Models\Good', 'theme_id', 'id');
     }
 }

@@ -37,4 +37,9 @@ class Good extends Model
     {
         return $this->belongsTo('App\Models\GoodCategory');
     }
+
+    public function theme()
+    {
+        return $this->belongsTo('App\Models\GoodTheme');
+    }
 }
