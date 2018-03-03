@@ -26,13 +26,13 @@ Route::group([
 
     $router->get('homes', 'HomeController@index');
 
-//    $router->group([
-//        'namespace' => 'Good',
-//    ], function (Router $router) {
-//        $router->apiResource('goods', 'GoodController');
-//        $router->apiResource('good/categories', 'CategoryController');
-//    });
-//
+    $router->group([
+        'namespace' => 'Good',
+    ], function (Router $router) {
+        $router->apiResource('goods', 'GoodController');
+        $router->apiResource('good/categories', 'CategoryController');
+    });
+
 //    $router->group([
 //        'namespace' => 'Setting',
 //    ], function (Router $router) {

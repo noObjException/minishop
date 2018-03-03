@@ -16,4 +16,9 @@ Route::group([
         $router->resource('carousels', 'CarouselController');
     });
 
+    $router->group(['namespace' => 'Good'], function (Router $router) {
+        $router->resource('goods', 'GoodController');
+        $router->resource('good/categories', 'CategoryController');
+    });
+
 });
