@@ -31,6 +31,7 @@ Route::group([
     ], function (Router $router) {
         $router->apiResource('goods', 'GoodController');
         $router->apiResource('good/categories', 'CategoryController');
+        $router->apiResource('good/themes', 'ThemeController');
     });
 
     $router->group([

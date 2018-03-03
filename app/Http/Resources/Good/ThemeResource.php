@@ -18,6 +18,7 @@ class ThemeResource extends Resource
             'id'    => $this->id,
             'title' => $this->title,
             'image' => admin_upload_link($this->image),
+            'goods' => GoodResource::collection($this->goods)
         ];
     }
 }
