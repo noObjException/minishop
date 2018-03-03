@@ -33,6 +33,20 @@ Route::group([
         $router->apiResource('good/categories', 'CategoryController');
     });
 
+    $router->group([
+        'namespace' => 'Auth'
+    ], function(Router $router) {
+        $router->post('token', 'AuthController@token');
+        $router->post('register', 'AuthController@register');
+    });
+
+    $router->group([
+        'namespace' => 'User',
+        'middleware' => 'auth:api'
+    ], function (Router $router) {
+        $router->apiResource('users', 'UserController');
+    });
+
 //    $router->group([
 //        'namespace' => 'Setting',
 //    ], function (Router $router) {
