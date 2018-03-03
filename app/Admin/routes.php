@@ -25,6 +25,7 @@ Route::group([
     $router->group(['namespace' => 'Good'], function (Router $router) {
         $router->resource('goods', 'GoodController');
         $router->resource('good/categories', 'CategoryController');
+        $router->resource('good/themes', 'ThemeController');
     });
 
 });

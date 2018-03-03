@@ -45,6 +45,7 @@ class MenuSeeder extends Seeder
             'sub_menus' => [
                 ['title' => '商品列表', 'uri' => 'goods',],
                 ['title' => '商品分类', 'uri' => 'good/categories',],
+                ['title' => '商品主题', 'uri' => 'good/themes',],
             ],
         ],
     ];
