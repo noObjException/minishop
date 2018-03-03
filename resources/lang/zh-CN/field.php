@@ -12,6 +12,11 @@ return [
     'description' => '描述',
     'detail'      => '详情',
 
+    'nickname' => '昵称',
+    'username' => '用户名',
+    'realname' => '真实姓名',
+    'avatar'   => '头像',
+
     'open'  => '启用',
     'close' => '禁用',
 

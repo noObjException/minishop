@@ -24,8 +24,7 @@ class UserController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('用户列表');
 
             $content->body($this->grid());
         });
@@ -41,8 +40,7 @@ class UserController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('用户');
 
             $content->body($this->form()->edit($id));
         });
@@ -57,8 +55,7 @@ class UserController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('用户');
 
             $content->body($this->form());
         });
@@ -73,10 +70,14 @@ class UserController extends Controller
     {
         return Admin::grid(User::class, function (Grid $grid) {
 
-            $grid->id('ID')->sortable();
+            $grid->column('id')->sortable();
 
-            $grid->created_at();
-            $grid->updated_at();
+            $grid->column('nickname', __('field.nickname'));
+            $grid->column('avatar', __('field.avatar'))->image('', 40, 40);
+            $grid->column('status', __('field.status'))->switch(get_switch_data());
+
+            $grid->column('created_at', __('field.created_at'));
+            $grid->column('updated_at', __('field.updated_at'));
         });
     }
 
@@ -91,8 +92,13 @@ class UserController extends Controller
 
             $form->display('id', 'ID');
 
-            $form->display('created_at', 'Created At');
-            $form->display('updated_at', 'Updated At');
+            $form->text('nickname', __('field.nickname'))->rules('required');
+            $form->image('avatar', __('field.avatar'));
+            $form->number('sort', __('field.sort'))->default(0)->help(__('help.sort'));
+            $form->switch('status', __('field.status'))->states(get_switch_data())->value(1);
+
+            $form->display('created_at', __('field.created_at'));
+            $form->display('updated_at', __('field.updated_at'));
         });
     }
 }

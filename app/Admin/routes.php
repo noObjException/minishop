@@ -12,6 +12,12 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
 
+    $router->group(['namespace' => 'User'], function (Router $router) {
+        $router->resource('users', 'UserController');
+        $router->resource('userGroups', 'GroupController');
+        $router->resource('userLevels', 'LevelController');
+    });
+
     $router->group(['namespace' => 'Setting'], function (Router $router) {
         $router->resource('carousels', 'CarouselController');
     });

@@ -45,6 +45,7 @@ class AuthController extends Controller
             'gender'                 => $encryptedData['gender'],
             'group_id'               => 1,
             'level_id'               => 1,
+            'status'                 => 1,
         ]);
 
         $data = [

@@ -13,9 +13,9 @@ class HomeController extends Controller
     public function index()
     {
         $data = [
-            'carousels'   => CarouselResource::collection(Carousel::NormalStatus()->get()),
+            'carousels'   => CarouselResource::collection(Carousel::NormalStatus()->take(4)->get()),
             'themes'      => CarouselResource::collection(Carousel::NormalStatus()->get()),
-            'newProducts' => GoodResource::collection(Good::NormalStatus()->get()),
+            'newProducts' => GoodResource::collection(Good::NormalStatus()->take(20)->get()),
         ];
 
         return compact('data');
