@@ -10,11 +10,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-
         $data = [
-            'carousels' => CarouselResource::collection(Carousel::NormalStatus()->get()),
-            'themes'    => [],
-            'products'  => [],
+            'carousels'   => CarouselResource::collection(Carousel::NormalStatus()->get()),
+            'themes'      => CarouselResource::collection(Carousel::NormalStatus()->get()),
+            'newProducts' => CarouselResource::collection(Carousel::NormalStatus()->get()),
         ];
 
         return compact('data');
