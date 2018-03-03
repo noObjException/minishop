@@ -86,6 +86,7 @@ class GoodController extends Controller
             $grid->column('price', __('field.price'))->display(function ($price) {
                 return '¥ ' . $price;
             });
+            $grid->column('stock', __('field.stock'))->editable();
             $grid->column('status', __('field.status'))->switch(get_switch_data());
 
             $grid->column('created_at', __('field.created_at'));
@@ -111,6 +112,7 @@ class GoodController extends Controller
             $form->multipleImage('thumbs', __('field.image'));
             $form->currency('price', __('field.price'))->symbol('￥');
             $form->editor('detail', __('field.detail'));
+            $form->number('stock', __('field.stock'))->default(0);
             $form->number('sort', __('field.sort'))->default(0)->help(__('help.sort'));
             $form->switch('status', __('field.status'))->states(get_switch_data())->value(1);
 

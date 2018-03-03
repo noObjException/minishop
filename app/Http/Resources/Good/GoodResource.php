@@ -19,6 +19,7 @@ class GoodResource extends Resource
             'title'    => $this->title,
             'price'    => $this->price,
             'category' => $this->category->title,
+            'stock'    => $this->stock,
             'thumb'    => admin_upload_link(($this->thumbs)[0]),
             'thumbs'   => collect($this->thumbs)->map(function ($item) {
                 return admin_upload_link($item);

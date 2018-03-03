@@ -11,6 +11,7 @@ return [
     'price'       => '价格',
     'description' => '描述',
     'detail'      => '详情',
+    'stock'       => '库存',
 
     'nickname' => '昵称',
     'username' => '用户名',
