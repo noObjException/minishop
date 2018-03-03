@@ -26,7 +26,7 @@ class ThemeController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('商品分类');
+            $content->header('商品主题');
 
             $content->row(function (Row $row) {
                 $row->column(6, $this->treeView()->render());
@@ -58,7 +58,7 @@ class ThemeController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('商品分类');
+            $content->header('商品主题');
 
 
             $content->body($this->form()->edit($id));
