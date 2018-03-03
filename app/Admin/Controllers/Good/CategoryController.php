@@ -40,6 +40,7 @@ class CategoryController extends Controller
                     $form->select('pid', __('field.parent'))->options(GoodCategory::selectOptions());
                     $form->text('title', __('field.title'))->rules('required');
                     $form->image('image', __('field.image'));
+                    $form->switch('status', __('field.status'))->states(get_switch_data())->value(1);
                     $form->hidden('_token')->default(csrf_token());
 
                     $column->append((new Box(__('admin.new'), $form))->style('success'));

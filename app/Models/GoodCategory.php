@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Encore\Admin\Traits\AdminBuilder;
 use Encore\Admin\Traits\ModelTree;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * App\Models\GoodCategory
@@ -24,6 +25,15 @@ class GoodCategory extends Model
 
     protected $table = 'good_categories';
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('sort', function(Builder $builder) {
+            $builder->orderByDesc('sort');
+        });
+    }
+
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
@@ -33,8 +43,8 @@ class GoodCategory extends Model
         $this->setParentColumn('pid');
     }
 
-    public function good()
+    public function goods()
     {
-        return $this->belongsTo('App\Models\Good');
+        return $this->hasMany('App\Models\Good', 'category_id', 'id');
     }
 }
