@@ -16,7 +16,7 @@ class OrderResource extends Resource
     {
         return [
             'id'          => $this->id,
-            'price'       => $this->price,
+            'total_price' => $this->total_price,
             'order_num'   => $this->order_num,
             'status'      => $this->status,
             'pay_type'    => $this->pay_type,

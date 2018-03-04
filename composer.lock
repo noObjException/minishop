@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "77b002124a53b0fa93493209c4360561",
+    "content-hash": "66f2123034a7120d9c27c83ac4e48c91",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2827,6 +2827,61 @@
                 "uuid"
             ],
             "time": "2018-01-20T00:28:24+00:00"
+        },
+        {
+            "name": "rap2hpoutre/laravel-log-viewer",
+            "version": "v0.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rap2hpoutre/laravel-log-viewer.git",
+                "reference": "2d62e30b5f96565346ec11df5a9e50fd477c6382"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/rap2hpoutre/laravel-log-viewer/2d62e30b5f96565346ec11df5a9e50fd477c6382.zip",
+                "reference": "2d62e30b5f96565346ec11df5a9e50fd477c6382",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "4.2.*|5.*",
+                "php": ">=5.4.0"
+            },
+            "type": "laravel-package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rap2hpoutre\\LaravelLogViewer\\LaravelLogViewerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/controllers"
+                ],
+                "psr-0": {
+                    "Rap2hpoutre\\LaravelLogViewer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "rap2hpoutre",
+                    "email": "raphaelht@gmail.com"
+                }
+            ],
+            "description": "A Laravel log reader",
+            "keywords": [
+                "laravel",
+                "log",
+                "log-reader",
+                "log-viewer",
+                "logging",
+                "lumen"
+            ],
+            "time": "2018-03-01T08:51:46+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
