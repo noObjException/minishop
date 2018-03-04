@@ -15,15 +15,18 @@ class GoodResource extends Resource
     public function toArray($request)
     {
         return [
-            'id'       => $this->id,
-            'title'    => $this->title,
-            'price'    => $this->price,
-            'category' => $this->category->title,
-            'stock'    => $this->stock,
-            'thumb'    => admin_upload_link(($this->thumbs)[0]),
-            'thumbs'   => collect($this->thumbs)->map(function ($item) {
+            'id'             => $this->id,
+            'title'          => $this->title,
+            'price'          => $this->price,
+            'category'       => $this->category->title,
+            'stock'          => $this->stock,
+            'thumb'          => admin_upload_link(($this->thumbs)[0]),
+            'thumbs'         => collect($this->thumbs)->map(function ($item) {
                 return admin_upload_link($item);
             }),
+            'good_detail'    => $this->good_detail,
+            'product_params' => $this->product_params,
+            'after_service'  => $this->after_service,
         ];
     }
 }

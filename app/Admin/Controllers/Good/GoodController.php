@@ -102,22 +102,29 @@ class GoodController extends Controller
     protected function form()
     {
         return Admin::form(Good::class, function (Form $form) {
+            $form->tab('基本信息', function ($form) {
+                $form->display('id', 'ID');
 
-            $form->display('id', 'ID');
+                $form->text('title', __('field.title'))->rules('required');
+                $form->select('category_id', __('field.category'))->options(collect(GoodCategory::selectOptions())->slice(1)->all());
+                $form->select('theme_id', __('field.theme'))->options(collect(GoodTheme::selectOptions())->slice(1)->all());
+                $form->textarea('description', __('field.description'));
+                $form->multipleImage('thumbs', __('field.image'));
+                $form->currency('price', __('field.price'))->symbol('￥');
 
-            $form->text('title', __('field.title'))->rules('required');
-            $form->select('category_id', __('field.category'))->options(collect(GoodCategory::selectOptions())->slice(1)->all());
-            $form->select('theme_id', __('field.theme'))->options(collect(GoodTheme::selectOptions())->slice(1)->all());
-            $form->textarea('description', __('field.description'));
-            $form->multipleImage('thumbs', __('field.image'));
-            $form->currency('price', __('field.price'))->symbol('￥');
-            $form->editor('detail', __('field.detail'));
-            $form->number('stock', __('field.stock'))->default(0);
-            $form->number('sort', __('field.sort'))->default(0)->help(__('help.sort'));
-            $form->switch('status', __('field.status'))->states(get_switch_data())->value(1);
+                $form->number('stock', __('field.stock'))->default(0);
+                $form->number('sort', __('field.sort'))->default(0)->help(__('help.sort'));
+                $form->switch('status', __('field.status'))->states(get_switch_data())->value(1);
 
-            $form->display('created_at', __('field.created_at'));
-            $form->display('updated_at', __('field.updated_at'));
+                $form->display('created_at', __('field.created_at'));
+                $form->display('updated_at', __('field.updated_at'));
+
+            })->tab('详情', function ($form) {
+
+                $form->editor('good_detail', __('field.good_detail'));
+                $form->editor('product_params', __('field.product_params'));
+                $form->editor('after_service', __('field.after_service'));
+            });
         });
     }
 }
