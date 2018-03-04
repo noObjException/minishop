@@ -42,10 +42,18 @@ Route::group([
     });
 
     $router->group([
+        'namespace' => 'Order',
+        'middleware' => 'auth:api'
+    ], function(Router $router) {
+        $router->apiResource('orders', 'OrderController');
+    });
+
+    $router->group([
         'namespace' => 'User',
         'middleware' => 'auth:api'
     ], function (Router $router) {
         $router->apiResource('users', 'UserController');
+        $router->apiResource('user/orders', 'OrderController');
     });
 
 //    $router->group([

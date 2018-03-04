@@ -15,9 +15,9 @@ class AddGoodDetailToGoodsTable extends Migration
     {
         Schema::table('goods', function (Blueprint $table) {
             $table->dropColumn('detail');
-            $table->text('good_detail');
-            $table->text('product_params');
-            $table->text('after_service');
+            $table->text('good_detail')->nullable()->default(null);
+            $table->text('product_params')->nullable()->default(null);
+            $table->text('after_service')->nullable()->default(null);
         });
     }
 

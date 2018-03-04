@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Http\Resources\Order;
+
+use Illuminate\Http\Resources\Json\Resource;
+
+class OrderResource extends Resource
+{
+    /**
+     * Transform the resource collection into an array.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return array
+     */
+    public function toArray($request)
+    {
+        return [
+            'id'          => $this->id,
+            'price'       => $this->price,
+            'order_num'   => $this->order_num,
+            'status'      => $this->status,
+            'pay_type'    => $this->pay_type,
+            'remark'      => $this->remark,
+            'address'     => $this->address,
+            'finished_at' => $this->finished_at,
+            'paid_at'     => $this->paid_at,
+            'total'       => $this->total,
+        ];
+    }
+}

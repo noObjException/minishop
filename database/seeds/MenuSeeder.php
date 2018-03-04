@@ -34,9 +34,9 @@ class MenuSeeder extends Seeder
             'title'     => '网站设置',
             'uri'       => '',
             'sub_menus' => [
-                ['title' => '广告列表', 'uri' => 'advertises',],
+//                ['title' => '广告列表', 'uri' => 'advertises',],
                 ['title' => '首页轮播', 'uri' => 'carousels',],
-                ['title' => '导航菜单', 'uri' => 'navMenus',],
+//                ['title' => '导航菜单', 'uri' => 'navMenus',],
             ],
         ],
         [
@@ -48,6 +48,13 @@ class MenuSeeder extends Seeder
                 ['title' => '商品主题', 'uri' => 'good/themes',],
             ],
         ],
+        [
+            'title' => '订单管理',
+            'uri' => '',
+            'sub_menus' => [
+                ['title' => '订单列表', 'uri' => 'orders']
+            ]
+        ]
     ];
 
     protected $helper_menus = [
