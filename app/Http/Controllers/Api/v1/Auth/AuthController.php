@@ -33,21 +33,22 @@ class AuthController extends Controller
 
         $encryptedData = $miniProgram->encryptor->decryptData($wx_session->session_key, $userInfo['iv'], $userInfo['encryptedData']);
 
-        $user = User::Create([
+        $user = User::firstOrCreate([
             'wx_mini_program_openid' => $encryptedData['openId'],
-            'wx_union_id'            => isset($encryptedData['unionId']) ? ($encryptedData['unionId']) : '',
-            'nickname'               => $encryptedData['nickName'],
-            'avatar'                 => $encryptedData['avatarUrl'],
-            'area'                   => $encryptedData['country'],
-            'province'               => $encryptedData['province'],
-            'city'                   => $encryptedData['city'],
-            'gender'                 => $encryptedData['gender'],
-            'group_id'               => 1,
-            'level_id'               => 1,
-            'status'                 => 1,
+        ], [
+            'wx_union_id' => isset($encryptedData['unionId']) ? ($encryptedData['unionId']) : '',
+            'nickname'    => $encryptedData['nickName'],
+            'avatar'      => $encryptedData['avatarUrl'],
+            'area'        => $encryptedData['country'],
+            'province'    => $encryptedData['province'],
+            'city'        => $encryptedData['city'],
+            'gender'      => $encryptedData['gender'],
+            'group_id'    => 1,
+            'level_id'    => 1,
+            'status'      => 1,
         ]);
 
-        throw_unless($user, new UnauthorizedException(), '查找用户失败');
+        throw_unless($user, new UnauthorizedException('查找用户失败'));
 
         $data = [
             'token' => $user->createToken('MyApp')->accessToken,

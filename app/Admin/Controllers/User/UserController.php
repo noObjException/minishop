@@ -78,6 +78,8 @@ class UserController extends Controller
 
             $grid->column('created_at', __('field.created_at'));
             $grid->column('updated_at', __('field.updated_at'));
+
+            $grid->disableCreateButton();
         });
     }
 
