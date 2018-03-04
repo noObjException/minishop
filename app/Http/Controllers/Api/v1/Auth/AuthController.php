@@ -33,9 +33,7 @@ class AuthController extends Controller
 
         $encryptedData = $miniProgram->encryptor->decryptData($wx_session->session_key, $userInfo['iv'], $userInfo['encryptedData']);
 
-        $user = User::updateOrCreate([
-            'wx_mini_program_openid' => $encryptedData['openId'],
-        ], [
+        $user = User::Create([
             'wx_mini_program_openid' => $encryptedData['openId'],
             'wx_union_id'            => isset($encryptedData['unionId']) ? ($encryptedData['unionId']) : '',
             'nickname'               => $encryptedData['nickName'],
