@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\UnauthorizedException;
 
 class AuthController extends Controller
 {
@@ -47,6 +48,8 @@ class AuthController extends Controller
             'level_id'               => 1,
             'status'                 => 1,
         ]);
+
+        throw_unless($user, new UnauthorizedException(), '查找用户失败');
 
         $data = [
             'token' => $user->createToken('MyApp')->accessToken,
