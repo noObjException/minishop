@@ -15,15 +15,18 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
+
             $table->integer('user_id')->comment('用户id');
             $table->string('order_num')->default('')->comment('订单号');
-            $table->decimal('price')->default('0.00')->comment('价格');
+            $table->decimal('total_price')->default('0.00')->comment('价格');
             $table->tinyInteger('status')->index()->comment('状态');
             $table->string('pay_type')->default('')->comment('支付方式');
             $table->string('remark')->default('')->comment('备注');
-            $table->json('address')->comment('地址');
+            $table->json('address')->nullable()->default(null)->comment('地址');
             $table->timestamp('finished_at')->default(null)->comment('完成时间')->nullable();
             $table->timestamp('paid_at')->default(null)->comment('付款时间时间')->nullable();
+            $table->unsignedInteger('total')->comment('总数');
+
             $table->timestamps();
             $table->softDeletes();
         });
