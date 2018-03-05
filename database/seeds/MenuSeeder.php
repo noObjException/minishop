@@ -37,6 +37,7 @@ class MenuSeeder extends Seeder
 //                ['title' => '广告列表', 'uri' => 'advertises',],
                 ['title' => '首页轮播', 'uri' => 'carousels',],
 //                ['title' => '导航菜单', 'uri' => 'navMenus',],
+//                ['title' => '微信小程序设置', 'uri' => 'miniProgramSettings',],
             ],
         ],
         [

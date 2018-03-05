@@ -20,6 +20,7 @@ Route::group([
 
     $router->group(['namespace' => 'Setting'], function (Router $router) {
         $router->resource('carousels', 'CarouselController');
+        $router->resource('miniProgramSettings', 'WechatMiniProgramController');
     });
 
     $router->group(['namespace' => 'Good'], function (Router $router) {
@@ -27,5 +28,4 @@ Route::group([
         $router->resource('good/categories', 'CategoryController');
         $router->resource('good/themes', 'ThemeController');
     });
-
 });

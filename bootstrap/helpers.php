@@ -78,3 +78,28 @@ if (!function_exists('get_order_num')) {
             . sprintf('%02d', rand(0, 99));
     }
 }
+
+if (!function_exists('get_setting')) {
+    /**
+     * 获取设置值
+     *
+     * @param string $name 设置名
+     * @return array    设置内容
+     */
+    function get_setting(string $name = ''): array
+    {
+        if (empty($name)) {
+            return [];
+        }
+
+        $model = \App\Models\Setting::where('name', $name)->first();
+
+        if (empty($model)) {
+            return [];
+        }
+
+        $content = $model->content;
+
+        return !empty($content) ? $content : [];
+    }
+}
