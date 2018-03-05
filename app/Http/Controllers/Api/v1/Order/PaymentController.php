@@ -35,7 +35,9 @@ class PaymentController extends Controller
         throw_unless($result['return_code'] === 'SUCCESS' && $result['result_code'] === 'SUCCESS',
             new HttpException('支付错误'));
 
-        return $payment->jssdk->sdkConfig($result['prepay_id']);
+        $data = $payment->jssdk->sdkConfig($result['prepay_id']);
+
+        return compact('data');
     }
 
     public function wxNotify()
