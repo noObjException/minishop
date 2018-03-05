@@ -10,4 +10,14 @@ class OrderGood extends Model
     use SoftDeletes;
 
     protected $table = 'order_goods';
+
+    public function good()
+    {
+        return $this->belongsTo('App\Models\Good', 'goods_id', 'id');
+    }
+
+    public function order()
+    {
+        return $this->belongsTo('App\Models\Order');
+    }
 }

@@ -28,4 +28,8 @@ Route::group([
         $router->resource('good/categories', 'CategoryController');
         $router->resource('good/themes', 'ThemeController');
     });
+
+    $router->group(['namespace' => 'Order'], function (Router $router) {
+        $router->resource('orders', 'OrderController');
+    });
 });
