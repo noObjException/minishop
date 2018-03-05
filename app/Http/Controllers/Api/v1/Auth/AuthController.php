@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use EasyWeChat;
 use Illuminate\Http\Request;
 use Illuminate\Validation\UnauthorizedException;
 
@@ -27,7 +28,7 @@ class AuthController extends Controller
         $code     = $request->get('code');
         $userInfo = $request->get('userInfo');
 
-        $miniProgram = app('wechat.mini_program');
+        $miniProgram = EasyWeChat::miniProgram();
 
         $wx_session = $miniProgram->auth->session($code);
 

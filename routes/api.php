@@ -46,7 +46,9 @@ Route::group([
         'middleware' => 'auth:api'
     ], function(Router $router) {
         $router->apiResource('orders', 'OrderController');
+        $router->post('payment/miniProgramPay', 'PaymentController@miniProgramPay');
     });
+    $router->post('payment/wxNotify', 'Order\PaymentController@notify');
 
     $router->group([
         'namespace' => 'User',
