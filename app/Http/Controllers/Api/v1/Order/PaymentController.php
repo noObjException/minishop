@@ -33,7 +33,7 @@ class PaymentController extends Controller
         ]);
 
         throw_unless($result['return_code'] === 'SUCCESS' && $result['result_code'] === 'SUCCESS',
-            new HttpException('支付错误'));
+            new HttpException('支付错误:' . $result['return_msg']));
 
         $data = $payment->jssdk->sdkConfig($result['prepay_id']);
 
@@ -55,10 +55,10 @@ class PaymentController extends Controller
             // 用户是否支付成功
             if ($message['result_code'] === 'SUCCESS') {
                 // 不是已经支付状态则修改为已经支付状态
-                $order->paid_at       = Carbon::now();
-                $order->status         = 1;
-                $order->pay_type       = 'WECHAT_PAY';
-//                $order->arrived_amount = $message['total_fee'] / 100;
+                $order->paid_at  = Carbon::now();
+                $order->status   = 1;
+                $order->pay_type = 'WECHAT_PAY';
+                //                $order->arrived_amount = $message['total_fee'] / 100;
             }
 
             $order->save();
