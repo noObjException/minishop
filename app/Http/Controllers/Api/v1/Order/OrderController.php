@@ -62,7 +62,7 @@ class OrderController extends Controller
         }
 
         // 记录订单商品信息
-        $order_goods = $goods->map(function ($item) use ($order) {
+        $good_orders = $goods->map(function ($item) use ($order) {
             return [
                 'order_id'    => $order->id,
                 'good_id'     => $item->id,
@@ -72,7 +72,7 @@ class OrderController extends Controller
                 'updated_at'  => Carbon::now(),
             ];
         });
-        DB::table('order_goods')->insert($order_goods->all());
+        DB::table('good_order')->insert($good_orders->all());
 
         $data = [
             'order_id' => $order->id,
