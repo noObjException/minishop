@@ -176,7 +176,7 @@ class OrderController extends Controller
                 return $data;
             });
 
-            $grid->model()->with(['user', 'goods.good']);
+            $grid->model()->with(['user', 'goods']);
 
             $grid->filter(function ($filter) {
                 $filter->useModal();
