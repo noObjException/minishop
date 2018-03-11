@@ -48,7 +48,7 @@ Route::group([
         $router->apiResource('orders', 'OrderController');
         $router->post('payment/miniProgramPay', 'PaymentController@miniProgramPay');
     });
-    $router->post('payment/wxNotify', 'Order\PaymentController@notify');
+    $router->post('payment/wxNotify', 'Order\PaymentController@wxNotify');
 
     $router->group([
         'namespace' => 'User',
