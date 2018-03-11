@@ -13,7 +13,7 @@ class OrderGood extends Model
 
     public function good()
     {
-        return $this->belongsTo('App\Models\Good', 'goods_id', 'id');
+        return $this->belongsTo('App\Models\Good', 'good_id', 'id');
     }
 
     public function order()

@@ -23,7 +23,7 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
 
         $data = [
-            'orderInfo' => new OrderResource($order)
+            'orderInfo' => new OrderResource($order),
         ];
 
         return compact('data');
@@ -31,7 +31,7 @@ class OrderController extends Controller
 
     public function store(OrderPost $request)
     {
-        $params = $request->json()->all();
+        $params   = $request->json()->all();
         $cartData = collect($params['cartData']);
 
         // 查询购买商品
@@ -39,9 +39,10 @@ class OrderController extends Controller
 
         // 计算商品价格
         $good_counts = $cartData->pluck('counts', 'good_id');
-        $goods = $goods->map(function ($item) use ($good_counts) {
+        $goods       = $goods->map(function ($item) use ($good_counts) {
             $item->total_price = $item->price * $good_counts[$item->id];
-            $item->total = $good_counts[$item->id];
+            $item->total       = $good_counts[$item->id];
+
             return $item;
         });
 
@@ -61,10 +62,10 @@ class OrderController extends Controller
         }
 
         // 记录订单商品信息
-        $order_goods = $goods->map(function($item) use ($order) {
+        $order_goods = $goods->map(function ($item) use ($order) {
             return [
                 'order_id'    => $order->id,
-                'goods_id'    => $item->id,
+                'good_id'     => $item->id,
                 'total'       => $item->total,
                 'total_price' => $item->total_price,
                 'created_at'  => Carbon::now(),

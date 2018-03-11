@@ -29,7 +29,7 @@ class AuthController extends Controller
         $userInfo = $request->get('userInfo');
 
         $miniProgram = EasyWeChat::miniProgram();
-        info('code----'.$code);
+
         $wx_session = $miniProgram->auth->session($code);
 
         $encryptedData = $miniProgram->encryptor->decryptData($wx_session->session_key, $userInfo['iv'], $userInfo['encryptedData']);

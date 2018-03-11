@@ -25,6 +25,7 @@ class OrderResource extends Resource
             'finished_at' => $this->finished_at,
             'paid_at'     => $this->paid_at,
             'total'       => $this->total,
+            'thumb'       => admin_upload_link((string)($this->goods->first())['thumbs'][0])
         ];
     }
 }

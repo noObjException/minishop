@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrderGoodsTable extends Migration
+class CreateGoodOrderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateOrderGoodsTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_goods', function (Blueprint $table) {
+        Schema::create('good_order', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('order_id')->index();
-            $table->unsignedInteger('goods_id')->index();
+            $table->unsignedInteger('good_id')->index();
             $table->decimal('total_price')->default('0.00');
             $table->unsignedInteger('total');
             $table->timestamps();
@@ -31,6 +31,6 @@ class CreateOrderGoodsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_goods');
+        Schema::dropIfExists('good_order');
     }
 }

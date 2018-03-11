@@ -16,7 +16,7 @@ class HomeController extends Controller
     {
         $data = [
             'carousels' => CarouselResource::collection(Carousel::NormalStatus()->take(4)->get()),
-            'themes'    => ThemeResource::collection(GoodTheme::NormalStatus()->get()),
+            'themes'    => ThemeResource::collection(GoodTheme::NormalStatus()->take(3)->get()),
             'newGoods'  => GoodResource::collection(Good::NormalStatus()->take(20)->get()),
         ];
 
