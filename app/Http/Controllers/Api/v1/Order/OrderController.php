@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1\Order;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Order\OrderPost;
+use App\Http\Resources\Order\OrderResource;
 use App\Models\Good;
 use App\Models\Order;
 use Carbon\Carbon;
@@ -19,7 +20,13 @@ class OrderController extends Controller
 
     public function show($id)
     {
+        $order = Order::findOrFail($id);
 
+        $data = [
+            'orderInfo' => new OrderResource($order)
+        ];
+
+        return compact('data');
     }
 
     public function store(OrderPost $request)
