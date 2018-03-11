@@ -15,6 +15,8 @@ class Order extends Model
 
     public function goods()
     {
-        return $this->belongsToMany('App\Models\Good');
+        return $this->belongsToMany('App\Models\Good')
+            ->withPivot('total', 'total_price')
+            ->withTimestamps();
     }
 }

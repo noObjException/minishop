@@ -52,14 +52,12 @@ class OrderController extends Controller
 
                     // 商品信息
                     $goods = $order->goods
-                        ->map(function ($item) {
-                            $good = $item->good;
-
+                        ->map(function ($good) {
                             return [
                                 'title'       => $good->title,
-                                'price'       => '¥ '.$good->price,
-                                'total'       => $item->total,
-                                'total_price' => '¥ '.$item->total_price,
+                                'price'       => '¥ ' . $good->price,
+                                'total'       => $good->pivot->total,
+                                'total_price' => '¥ ' . $good->pivot->total_price,
                             ];
                         })
                         ->all();
@@ -120,9 +118,10 @@ class OrderController extends Controller
             $grid->column('user.avatar', '下单人头像')->image('', 40, 40);
             $grid->column('user.nickname', '下单人昵称')->limit(6);
             $grid->column('goods', '购买信息')->display(function ($goods) {
-                //                dd($goods);
                 return '商品种类: ' . count($goods) . '<br>' .
-                    '商品总数: ' . collect($goods)->sum('total') . '<br>';
+                        '商品总数: ' . collect($goods)->sum(function ($good) {
+                            return $good['pivot']['total'];
+                        }) . '<br>';
             });
             $grid->column('pay_type_status', '支付方式/状态')->display(function () {
                 switch ($this->status) {
