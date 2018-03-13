@@ -44,8 +44,8 @@ class OrderController extends Controller
                         '订单编号:'  => $order['order_num'],
                         '订单金额:'  => '￥' . $order['total_price'],
                         '付款方式:'  => get_pay_type($order['pay_type']),
-                        '收货地址:'  => $address['realname'] . ' ' . $address['mobile'] . '<br>' .
-                            $address['college'] . ' ' . $address['area'],
+                        '收货地址:'  => $address['userName'] . ' ' . $address['telNumber'] . '<br>' .
+                            $address['totalDetail'],
                         '备注:   ' => $order['remark'],
                     ];
                     $column->append((new Box('订单信息', new Table([], $details)))->style('info')->solid());
@@ -82,10 +82,10 @@ class OrderController extends Controller
                             $order['status'] = '待付款';
                             break;
                         case 1:
-                            $order['status'] = '待接单';
+                            $order['status'] = '待发货';
                             break;
                         case 2:
-                            $order['status'] = '配送中';
+                            $order['status'] = '送货中';
                             break;
                         case 3:
                             $order['status'] = '已完成';
@@ -132,10 +132,10 @@ class OrderController extends Controller
                         $status = '<span class="label label-danger">待付款</span>';
                         break;
                     case 1:
-                        $status = '<span class="label label-success">待接单</span>';
+                        $status = '<span class="label label-success">待发货</span>';
                         break;
                     case 2:
-                        $status = '<span class="label label-success">配送中</span>';
+                        $status = '<span class="label label-success">送货中</span>';
                         break;
                     case 3:
                         $status = '<span class="label label-success">已完成</span>';
