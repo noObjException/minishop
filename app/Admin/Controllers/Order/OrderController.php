@@ -44,7 +44,7 @@ class OrderController extends Controller
                         '订单编号:'  => $order['order_num'],
                         '订单金额:'  => '￥' . $order['total_price'],
                         '付款方式:'  => get_pay_type($order['pay_type']),
-                        '收货地址:'  => $address['userName'] . ' ' . $address['telNumber'] . '<br>' .
+                        '收货地址:'  => $address['name'] . ' ' . $address['mobile'] . '<br>' .
                             $address['totalDetail'],
                         '备注:   ' => $order['remark'],
                     ];
