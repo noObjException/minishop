@@ -32,6 +32,9 @@ class PaymentController extends Controller
             'openid'       => $user->wx_mini_program_openid,
         ]);
 
+        $order->address = $request->get('address');
+        $order->save();
+
         throw_unless($result['return_code'] === 'SUCCESS' && $result['result_code'] === 'SUCCESS',
             new HttpException('支付错误:' . $result['return_msg']));
 

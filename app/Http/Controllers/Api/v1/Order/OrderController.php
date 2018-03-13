@@ -48,7 +48,7 @@ class OrderController extends Controller
 
         // 生成订单
         $order_data['order_num']   = get_order_num('SC');
-        $order_data['pay_type']    = 'WECHAT_PAY';
+//        $order_data['pay_type']    = 'WECHAT_PAY';
         $order_data['status']      = 0;
         $order_data['total_price'] = $goods->sum('total_price');
         $order_data['total']       = $cartData->sum('counts');

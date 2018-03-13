@@ -56,7 +56,7 @@ class OrderController extends Controller
                             return [
                                 'title'       => $good->title,
                                 'price'       => '¥ ' . $good->price,
-                                'total'       => $good->pivot->total,
+                                'total'       => 'x' . $good->pivot->total,
                                 'total_price' => '¥ ' . $good->pivot->total_price,
                             ];
                         })
