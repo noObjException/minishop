@@ -8,6 +8,10 @@ class Order extends Model
 {
     use SoftDeletes;
 
+    protected $casts = [
+        'address' => 'array',
+    ];
+
     public function user()
     {
         return $this->belongsTo('App\Models\User');
