@@ -22,11 +22,11 @@ class OrderResource extends Resource
             'pay_type'    => $this->pay_type,
             'remark'      => $this->remark,
             'address'     => $this->address,
-            'finished_at' => $this->finished_at->toDateTimeString(),
-            'created_at'  => $this->created_at->toDateTimeString(),
-            'paid_at'     => $this->paid_at->toDateTimeString(),
+            'finished_at' => $this->finished_at ? $this->finished_at->toDateTimeString() : null,
+            'created_at'  => $this->created_at ? $this->created_at->toDateTimeString() : null,
+            'paid_at'     => $this->paid_at ? $this->paid_at->toDateTimeString() : null,
             'total'       => $this->total,
-            'thumb'       => admin_upload_link((string)($this->goods->first())['thumbs'][0])
+            'thumb'       => admin_upload_link((string)($this->goods->first())['thumbs'][0]),
         ];
     }
 }
